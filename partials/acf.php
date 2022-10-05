@@ -78,22 +78,28 @@ if( have_rows('flexible_content') ):
         $cf_title = get_sub_field('cf_title');
         $cf_subtitle = get_sub_field('cf_subtitle');
         $cf_form_shortcode = get_sub_field('cf_form_shortcode');
+        $cf_is_private = get_sub_field('cf_is_private');
 
     ?>
     <div class="contact_form">
       <div class="container">
 
-        <?php if($cf_title != ''){ ?>
-          <div class="sectionTitle">
-            <h2><?php echo $cf_title; ?></h2>
+        <?php 
+          if(!is_user_logged_in() && $cf_is_private ) {
+            echo lockedContent($title, $accordion=true);
+          }else{
+        ?>
+          <?php if($cf_title != ''){ ?>
+            <div class="sectionTitle">
+              <h2><?php echo $cf_title; ?></h2>
+            </div>
+          <?php } ?>
+          <?php if($cf_subtitle != ''){ echo '<p>'.$cf_subtitle.'</p>'; } ?>
+
+          <div class="cf">
+            <?php echo do_shortcode($cf_form_shortcode); ?>
           </div>
         <?php } ?>
-        <?php if($cf_subtitle != ''){ echo '<p>'.$cf_subtitle.'</p>'; } ?>
-
-        <div class="cf">
-          <?php echo do_shortcode($cf_form_shortcode); ?>
-        </div>
-
 
       </div>
     </div>

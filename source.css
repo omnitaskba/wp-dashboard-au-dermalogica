@@ -227,8 +227,9 @@ a{
 
 
 /* buttons */
+.btn.btn-primary,
 .button{
-    @apply bg-primary-dark hover:bg-primary-light text-white transition-all ease-in-out h-12 flex justify-center items-center px-8 hover:text-white hover:cursor-pointer;
+    @apply bg-primary-dark hover:bg-primary-light text-white transition-all ease-in-out h-12 flex justify-center items-center px-8 hover:text-white hover:cursor-pointer uppercase text-sm;
 }
 .button.secondary{
     @apply hover:text-white bg-secondary hover:bg-secondary hover:bg-opacity-75;
@@ -337,4 +338,16 @@ a{
 }
 .three_column_block .item h3{
     @apply tracking-widest text-primary-dark font-helvetica35;
+}
+
+
+/* locked content */
+.locked{
+    @apply relative py-20;
+}
+.locked > div:first-child{
+    @apply opacity-30;
+}
+.locked .lockedContent{
+    @apply absolute inset-0 backdrop-blur-sm flex justify-center items-center flex-col;
 }

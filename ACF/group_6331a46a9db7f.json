@@ -175,7 +175,7 @@
                 "layout_6331af8a6728c": {
                     "key": "layout_6331af8a6728c",
                     "name": "contact_form",
-                    "label": "Contact form",
+                    "label": "Shortcode Block",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -234,6 +234,25 @@
                             "prepend": "",
                             "append": "",
                             "maxlength": ""
+                        },
+                        {
+                            "key": "field_633d3ba0ad4ec",
+                            "label": "is private",
+                            "name": "cf_is_private",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -453,5 +472,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1664201989
+    "modified": 1664957364
 }

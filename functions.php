@@ -123,56 +123,30 @@ function _stringLimit($text, $limit) {
 // 
 // 
 function lockedContent($title, $accordion=true){
-	if($accordion){
-		return '
-        <div class="locked">
-            <div>
-                <p>
-                        Light-diffusing technology begins to balance the appearance of uneven pigmen- tation after one use, and continues working over time with potent Niacinamide and Hexylresor- cinol to help fade dark spots. Skin care powerhouse Shiitake Mushroom – rich in beta glucans – brightens skin, while adaptogenic Ashwagandha smoothes and delivers antioxidant benefits. Black Currant Oil and Peony Flower help boost skin’s natural luminosity. Skin-shielding actives help protect against pollution-induced dark spots.
-                </p>
-                <p class="hidden md:block">
-                        Light-diffusing technology begins to balance the appearance of uneven pigmen- tation after one use, and continues working over time with potent Niacinamide and Hexylresor- cinol to help fade dark spots. Skin care powerhouse Shiitake Mushroom – rich in beta glucans – brightens skin, while adaptogenic Ashwagandha smoothes and delivers antioxidant benefits. Black Currant Oil and Peony Flower help boost skin’s natural luminosity. Skin-shielding actives help protect against pollution-induced dark spots.
-                </p>
-            </div>
-            <div class="lockedContent">
-                <h3>For Professionals Only</h3>
-                <p class="mt-2 mb-6">Please sign-in or create an acccount to view this information.</p>
-                <div class="flex justify-center items-center gap-4">
-                    <a href="'.do_shortcode('[openid_connect_generic_auth_url]').'" class="button secondary rounded-full">sign in</a>
-                    <a href="'.do_shortcode('[openid_connect_generic_auth_url]').'" class="button outline secondary rounded-full">create account</a>
-                </div>
-            </div>
-        </div>
-		';
-	}else{
-		return '
-            <div class="w-full h-[160px] bg-primary-dark">
-                <div class="bg"></div>
-            </div>
-            <div class="relative flex flex-1 h-full justify-center items-center">
-                <div class="container text-center py-5">
-                    <div class="locked">
-                        <div>
-                            <p>
-                                    Light-diffusing technology begins to balance the appearance of uneven pigmen- tation after one use, and continues working over time with potent Niacinamide and Hexylresor- cinol to help fade dark spots. Skin care powerhouse Shiitake Mushroom – rich in beta glucans – brightens skin, while adaptogenic Ashwagandha smoothes and delivers antioxidant benefits. Black Currant Oil and Peony Flower help boost skin’s natural luminosity. Skin-shielding actives help protect against pollution-induced dark spots.
-                            </p>
-                            <p>
-                                    Light-diffusing technology begins to balance the appearance of uneven pigmen- tation after one use, and continues working over time with potent Niacinamide and Hexylresor- cinol to help fade dark spots. Skin care powerhouse Shiitake Mushroom – rich in beta glucans – brightens skin, while adaptogenic Ashwagandha smoothes and delivers antioxidant benefits. Black Currant Oil and Peony Flower help boost skin’s natural luminosity. Skin-shielding actives help protect against pollution-induced dark spots.
-                            </p>
-                        </div>
-                        <div class="lockedContent">
-                            <h3>For Professionals Only</h3>
-                            <p class="mt-2 mb-6">Please sign-in or create an acccount to view this information.</p>
-                            <div class="flex justify-center items-center gap-4">
-                                <a href="'.do_shortcode('[openid_connect_generic_auth_url]').'" class="button secondary rounded-full">sign in</a>
-                                <a href="'.do_shortcode('[openid_connect_generic_auth_url]').'" class="button outline secondary rounded-full">create account</a>
-                            </div>
+	return '
+        <div class="relative flex flex-1 h-full justify-center items-center">
+            <div class="container text-center py-5">
+                <div class="locked">
+                    <div>
+                        <p>
+                                Light-diffusing technology begins to balance the appearance of uneven pigmen- tation after one use, and continues working over time with potent Niacinamide and Hexylresor- cinol to help fade dark spots. Skin care powerhouse Shiitake Mushroom – rich in beta glucans – brightens skin, while adaptogenic Ashwagandha smoothes and delivers antioxidant benefits. Black Currant Oil and Peony Flower help boost skin’s natural luminosity. Skin-shielding actives help protect against pollution-induced dark spots.
+                        </p>
+                        <p>
+                                Light-diffusing technology begins to balance the appearance of uneven pigmen- tation after one use, and continues working over time with potent Niacinamide and Hexylresor- cinol to help fade dark spots. Skin care powerhouse Shiitake Mushroom – rich in beta glucans – brightens skin, while adaptogenic Ashwagandha smoothes and delivers antioxidant benefits. Black Currant Oil and Peony Flower help boost skin’s natural luminosity. Skin-shielding actives help protect against pollution-induced dark spots.
+                        </p>
+                    </div>
+                    <div class="lockedContent">
+                        <h3>For Professionals Only</h3>
+                        <p class="mt-2 mb-10">Please sign-in or create an acccount to view this information.</p>
+                        <div class="flex justify-center items-center gap-4">
+                            <a href="'.do_shortcode('[openid_connect_generic_auth_url]').'" class="button">sign in</a>
+                            <a href="'.do_shortcode('[openid_connect_generic_auth_url]').'" class="button secondary">create account</a>
                         </div>
                     </div>
                 </div>
-		    </div>
-		';
-	}
+            </div>
+        </div>
+    ';
 }
 
 
