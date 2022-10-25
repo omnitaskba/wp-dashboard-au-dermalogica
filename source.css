@@ -21,6 +21,21 @@
 }
 
 
+@import url("https://fast.fonts.net/t/1.css?apiType=css&projectid=110155fc-8353-436e-a66a-259167c7859f");
+@font-face{
+    font-family:"Adobe Caslon W05 Regular";
+    src:url("Fonts/8f1533f4-5a5f-48d3-b4da-c83ece88f90d.woff2") format("woff2"),url("Fonts/8a4b31a9-c77c-4291-bea5-4b79c863254a.woff") format("woff");
+}
+@font-face{
+    font-family:"Adobe Caslon W05 Semibold";
+    src:url("Fonts/afbd06c4-d501-4208-af44-920871f67bf2.woff2") format("woff2"),url("Fonts/478fb695-0d58-45bd-85a0-264376bc761b.woff") format("woff");
+}
+@font-face{
+    font-family:"Adobe Caslon W05 Bold";
+    src:url("Fonts/fb3cdae6-02ce-42bc-a047-9b8e2c8ef620.woff2") format("woff2"),url("Fonts/8325f69a-2847-42ed-9eff-55a66226074b.woff") format("woff");
+}
+
+
 
 @font-face {
     font-family: 'icomoon';
@@ -107,7 +122,7 @@ h1{
     @apply text-[42px] lg:text-[54px] font-helvetica25 leading-[54px] lg:leading-[64px] tracking-wide;
 }
 h2{
-    @apply text-[28px] lg:text-[38px] font-helvetica25 leading-[42px] lg:leading-[54px];
+    @apply text-[28px] lg:text-[38px] font-helvetica25 leading-[42px] lg:leading-[54px] tracking-wider;
 }
 h3{
     @apply text-[22px] lg:text-[28px] font-helvetica75 leading-[30px] lg:leading-[36px];
@@ -150,7 +165,7 @@ a{
     @apply flex justify-end;
 }
 .header .navContainer > a{
-    @apply flex justify-between items-center gap-2 bg-white text-primary-dark rounded-full px-5 py-3 font-light text-sm font-helvetica75;
+    @apply flex lg:hidden justify-between items-center gap-2 bg-white text-primary-dark rounded-full px-5 py-3 font-light text-sm font-helvetica75;
 }
 .header .navContainer > a > span{
     @apply pt-[1px];
@@ -160,6 +175,16 @@ a{
 }
 .admin-bar .header{
     @apply lg:top-[32px];
+}
+.header .navContainer > ul{
+    @apply hidden lg:flex justify-end items-center gap-6;
+}
+.header .navContainer > ul a{
+    @apply tracking-widest font-helvetica45 text-sm relative;
+}
+.header .navContainer > ul > li.current-menu-item > a:after{
+    content: "";
+    @apply block w-full h-[2px] bg-secondary absolute left-0 -bottom-3;
 }
 
 
@@ -341,6 +366,35 @@ a{
 }
 
 
+/* three_column_block_resourcces */
+.three_column_block_resourcces .sectionTitle{
+    @apply flex justify-center items-center gap-4;
+}
+.three_column_block_resourcces .sectionTitle:before,
+.three_column_block_resourcces .sectionTitle:after{
+    content: "";
+    @apply w-full h-[1px] bg-primary-dark;
+}
+.three_column_block_resourcces .sectionTitle > *{
+    @apply whitespace-nowrap tracking-widest text-2xl font-helvetica45;
+}
+.three_column_block_resourcces .item{
+    @apply flex flex-col justify-between border-[1px] border-primary-dark;
+}
+.three_column_block_resourcces .item .image{
+    @apply block pb-[50%] bg-cover bg-center mb-6 transition-all ease-in-out hover:opacity-90;
+}
+.three_column_block_resourcces .item p{
+    @apply my-4 px-4 font-helvetica45;
+}
+.three_column_block_resourcces .item h3{
+    @apply px-4 tracking-widest text-primary-dark font-helvetica35;
+}
+.three_column_block_resourcces .item .button{
+    @apply m-4;
+}
+
+
 /* locked content */
 .locked{
     @apply relative py-20;
@@ -350,4 +404,9 @@ a{
 }
 .locked .lockedContent{
     @apply absolute inset-0 backdrop-blur-sm flex justify-center items-center flex-col;
+}
+
+
+.hero_cta h2{
+    @apply font-caslonRegular text-2xl lg:text-7xl mb-6;
 }

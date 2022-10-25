@@ -12,7 +12,10 @@ module.exports = {
           'helvetica35': ['Helvetica Neue LT W05_35 Thin'],
           'helvetica45': ['Helvetica Neue LT W05_45 Light'],
           'helvetica55': ['Helvetica Neue LT W05_55 Roman'],
-          'helvetica75': ['Helvetica Neue LT W05_75 Bold']
+          'helvetica75': ['Helvetica Neue LT W05_75 Bold'],
+          'caslonRegular': ['Adobe Caslon W05 Regular'],
+          'caslonBold': ['Adobe Caslon W05 Bold'],
+          'caslonSemibold': ['Adobe Caslon W05 Semibold']
       },
       colors:{
         primary:{
