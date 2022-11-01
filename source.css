@@ -110,6 +110,11 @@
 @tailwind utilities;
 
 
+
+#ambitLauncherWrapper{
+    z-index: 9999 !important;
+}
+
 html, body{
     @apply p-0 m-0 flex flex-1 w-full flex-col min-h-full;
 }
