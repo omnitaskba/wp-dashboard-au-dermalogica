@@ -139,7 +139,7 @@ if( have_rows('flexible_content') ):
 
             echo '
             <div class="item">
-              <a href="'.$tcb_i_link['url'].'" style="background-image:url('.wp_get_attachment_image_url($tcb_i_image['ID'], 'full', '').');" class="image" '.($tcb_i_link['target']=='_blank' ? 'target="_blank"' : '').'><a>
+              <a href="'.$tcb_i_link['url'].'" style="background-image:url('.wp_get_attachment_image_url($tcb_i_image['ID'], 'full', '').');" class="image" '.($tcb_i_link['target']=='_blank' ? 'target="_blank"' : '').'></a>
               '.($tcb_i_overtitle != '' ? '<h4>'.$tcb_i_overtitle.'</h4>' : '').'
               '.($tcb_i_title != '' ? '<h3><a href="'.$tcb_i_link['url'].'" '.($tcb_i_link['target']=='_blank' ? 'target="_blank"' : '').'>'.$tcb_i_title.'</a></h3>' : '').'
             </div>
