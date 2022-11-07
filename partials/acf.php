@@ -45,7 +45,7 @@ if( have_rows('flexible_content') ):
 
             echo '
             <div class="item">
-              <a href="'.$bb1_i_link['url'].'" style="background-image:url('.wp_get_attachment_image_url($bb1_i_image['ID'], 'full', '').');" class="image" '.($bb1_i_link['target']=='_blank' ? 'target="_blank"' : '').'><a>
+              <a href="'.$bb1_i_link['url'].'" style="background-image:url('.wp_get_attachment_image_url($bb1_i_image['ID'], 'full', '').');" class="image" '.($bb1_i_link['target']=='_blank' ? 'target="_blank"' : '').'></a>
               '.($bb1_i_overtitle != '' ? '<h4>'.$bb1_i_overtitle.'</h4>' : '').'
               '.($bb1_i_title != '' ? '<h3><a href="'.$bb1_i_link['url'].'" '.($bb1_i_link['target']=='_blank' ? 'target="_blank"' : '').'>'.$bb1_i_title.'</a></h3>' : '').'
             </div>
