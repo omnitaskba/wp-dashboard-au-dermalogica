@@ -132,6 +132,9 @@ h2{
 h3{
     @apply text-[22px] lg:text-[28px] font-helvetica75 leading-[30px] lg:leading-[36px];
 }
+h4{
+    @apply text-[20px] lg:text-[24px] font-helvetica75 leading-[26px] lg:leading-[32px];
+}
 h5{
     @apply text-[18px] lg:text-[18px] font-helvetica75 leading-[22px] lg:leading-[22px];
 }
@@ -161,10 +164,13 @@ a{
 
 /* header */
 .header{
-    @apply w-full bg-white h-[150px] lg:h-[160px] flex items-center z-[9];
+    @apply w-full bg-primary-dark h-[150px] lg:h-[160px] flex items-center z-[9];
 }
 .header .logo{
     @apply font-bold text-white text-2xl font-helvetica75;
+}
+.header .logo img{
+    @apply max-w-[200px] lg:max-w-[270px];
 }
 .header .navContainer{
     @apply flex justify-end;
@@ -184,14 +190,32 @@ a{
 .header .navContainer > ul{
     @apply hidden lg:flex justify-end items-center gap-6;
 }
+.header .navContainer > ul > li{
+    @apply relative;
+}
 .header .navContainer > ul a{
-    @apply tracking-widest font-helvetica45 text-sm relative;
+    @apply block py-4 tracking-widest font-helvetica45 text-sm relative text-white hover:text-secondary;
 }
 .header .navContainer > ul > li.current-menu-item > a:after{
     content: "";
-    @apply block w-full h-[2px] bg-secondary absolute left-0 -bottom-3;
+    @apply block w-full h-[2px] bg-secondary absolute left-0 -bottom-0;
 }
-
+.header .navContainer > ul > li > ul{
+    @apply absolute left-0 top-[100%] w-[200px] bg-white hidden;
+}
+.header .navContainer > ul > li > ul:before{
+    content: "";
+    @apply absolute -top-2 left-4 border-transparent border-b-[8px] border-b-white border-r-[8px] border-l-[8px];
+}
+.header .navContainer > ul > li:hover > ul{
+    @apply block py-2 shadow-lg;
+}
+.header .navContainer > ul > li:hover > ul > li > a{
+    @apply block py-2 px-4 text-primary-dark hover:text-secondary border-b-[1px] border-b-gray-200;
+}
+.header .navContainer > ul > li:hover > ul > li:last-child > a{
+    @apply border-b-0;
+}
 
 /* main navigation  */
 .mainNavigation{
@@ -219,16 +243,31 @@ a{
     @apply flex flex-col gap-1 md:gap-2;
 }
 .mainNavigation > div > ul.menu > li{
-    @apply px-10;
+    @apply px-10 relative;
+}
+.mainNavigation > div > ul.menu > li button.opener{
+    @apply absolute top-3 right-3 z-[9] p-3 transition-all ease-in-out outline-none focus:ring-0 focus:outline-none;
+}
+.mainNavigation > div > ul.menu > li button.opener.active{
+    @apply rotate-180;
 }
 .mainNavigation > div > ul.menu > li > a{
-    @apply text-base md:text-lg font-helvetica35 hover:text-secondary transition-all ease-in-out py-4 block lowercase;
+    @apply text-base md:text-lg font-helvetica35 hover:text-secondary transition-all ease-in-out py-4 block lowercase relative z-[8];
 }
 .mainNavigation > div > ul.menu > li.current_page_item{
     @apply bg-secondary bg-opacity-10 border-l-[10px] border-l-secondary pl-[30px];
 }
 .mainNavigation > div > ul.menu > li.current_page_item > a{
     @apply text-secondary font-helvetica75;
+}
+.mainNavigation > div > ul.menu > li > ul {
+    @apply hidden;
+}
+.mainNavigation > div > ul.menu > li > ul.opened{
+    @apply block;
+} 
+.mainNavigation > div > ul.menu > li > ul > li > a{
+    @apply block py-2 pl-4;
 }
 
 
@@ -414,4 +453,77 @@ a{
 
 .hero_cta h2{
     @apply font-caslonRegular text-2xl lg:text-7xl mb-6;
+}
+
+
+.hero_carousel{
+    @apply h-[75vh] md:h-[50vh] relative;
+}
+.hero_carousel .tns-outer,
+.hero_carousel .tns-slider,
+.hero_carousel .tns-inner,
+.hero_carousel .tns-ovh{
+    @apply h-full;
+}
+.hero_carousel .item{
+    @apply h-full bg-cover bg-center;
+}
+.hero_carousel .item .container{
+    @apply h-full flex justify-start items-center;
+}
+.hero_carousel button.icon-chevron-left{
+    @apply p-3 absolute bottom-0 lg:bottom-auto lg:top-[50%] left-0 lg:left-4 text-2xl bg-white bg-opacity-50;
+}
+.hero_carousel button.icon-chevron-right{
+    @apply p-3 absolute bottom-0 lg:bottom-auto lg:top-[50%] right-0 lg:right-4 text-2xl bg-white bg-opacity-50;
+}
+
+
+
+/* page-pagination */
+.page-pagination{
+    @apply my-10;
+}
+.page-pagination ul{
+    @apply flex justify-center items-center;
+}
+.page-pagination li a,
+.page-pagination li span{
+    @apply block py-2 px-4 rounded-full hover:bg-gray-100;
+}
+
+
+/* article-loop */
+.article-loop{
+    @apply flex flex-col justify-between items-start pb-6 border-b-[1px] border-b-gray-200;
+}
+.article-loop .image{
+    @apply block aspect-video bg-center bg-cover mb-6 transition-all ease-in-out hover:opacity-75;
+}
+.article-loop .readmore{
+    @apply uppercase font-semibold text-sm mt-6;
+}
+.article-loop h4{
+    @apply pb-6 pt-2;
+}
+
+
+/* article-single */
+.article-single p{
+    @apply mb-6;
+}
+.article-single ul{
+    @apply mb-6 list-disc pl-6;
+}
+.article-single ol{
+    @apply mb-6 list-decimal pl-6;
+}
+.article-single strong{
+    @apply font-helvetica75;
+}
+.article-single a{
+    @apply text-secondary;
+}
+.article-single blockquote{
+    @apply py-10 text-center italic text-2xl;
 }

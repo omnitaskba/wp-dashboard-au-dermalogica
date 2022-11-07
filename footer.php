@@ -15,7 +15,10 @@
                     )
                 );
             ?>
-            <p class="text-xxs opacity-40 font-helvetica35 mt-1">Copyright © <?php echo date('Y'); ?> Dermalogica</p>
+            <p class="text-xxs opacity-40 font-helvetica35 mt-2">Copyright © <?php echo date('Y'); ?> Dermalogica</p>
+            <a href="https://www.instagram.com/dermalogicaproaus/" rel="noreffer" target="_blank" class="w-[20px] flex justify-end items-center gap-2 mt-6">
+                <span class="whitespace-nowrap uppercase text-xs font-helvetica35">Follow Us:</span> <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/instagram.png" alt="follow us on instagram"/>
+            </a>
         </div>
 
     </div>

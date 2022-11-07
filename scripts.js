@@ -17,6 +17,24 @@
     })
 
 
+    // 
+    $('.mainNavigation ul.menu > li').each(function(){
+        if($(this).hasClass('menu-item-has-children')===true){
+            $(this).append('<button type="button" class="opener icon-chevron-down"></button>');
+        }
+    })
+    $('button.opener').on('click',function(e){
+        e.preventDefault();
+        if($(this).hasClass('active')===true){
+            $(this).removeClass('active')
+            $(this).parent().find('ul:first').removeClass('opened');
+        }else{
+            $(this).addClass('active')
+            $(this).parent().find('ul:first').addClass('opened');
+        }
+    })
+
+
 
     // 
     function _topPage(){
@@ -174,6 +192,25 @@
 
     // 
     $('.zoom').magnificPopup({type:'image'})
+
+
+    // 
+    if($('div').hasClass('hero_carousel')===true){
+        $('div.hero_carousel').each(function(){
+            let _carousel_id = $(this).data('id');
+            const slider = tns({
+                container: '#'+_carousel_id,
+                items: 1,
+                slideBy: 'page',
+                autoplay: false,
+                autoplayButtonOutput: false,
+                nav:false,
+                mouseDrag:true,
+                prevButton: '#prev_'+_carousel_id,
+                nextButton: '#next_'+_carousel_id
+            });
+        })
+    }
   
   
   })(jQuery, this);

@@ -229,18 +229,45 @@ if( have_rows('flexible_content') ):
 
     <?php
 
-      elseif( get_row_layout() == '' ):
+      elseif( get_row_layout() == 'hero_carousel' ):
 
-        // $ = get_sub_field('');
-        // $ = get_sub_field('');
-        // $ = get_sub_field('');
-        // $ = get_sub_field('');
-        // $ = get_sub_field('');
-        // $ = get_sub_field('');
-        // $ = get_sub_field('');
-        // $ = get_sub_field('');
+        $hc_full_width = get_sub_field('hc_full_width');
+        $rand = mt_rand(000,999);
 
     ?>
+    <div class="hero_carousel <?php if(!$hc_full_width){ echo 'container'; } ?>" data-id="hc<?php echo $rand; ?>">
+      <div id="hc<?php echo $rand; ?>">
+        <?php
+
+          if( have_rows('hc_items') ){
+            $i=0;
+            while ( have_rows('hc_items') ){
+              the_row(); $i++;
+
+              $hc_i_image = get_sub_field('hc_i_image');
+              $hc_i_title = get_sub_field('hc_i_title');
+              $hc_i_subtitle = get_sub_field('hc_i_subtitle');
+              $hc_i_button = get_sub_field('hc_i_button');
+
+              echo '
+              <div class="item" style="background-image:url('.wp_get_attachment_image_url($hc_i_image['ID'], 'full', '').');">
+              <div class="container">
+                  <div class="max-w-xl '.($hc_full_width ? '' : 'px-4').'">
+                  '.($hc_i_title != '' ? '<h2>'.$hc_i_title.'</h2>' : '').'
+                  '.($hc_i_subtitle != '' ? '<p>'.$hc_i_subtitle.'</p>' : '').'
+                  '.($hc_i_button ? '<div class="flex items-start mt-6"><a href="'.$hc_i_button['url'].'" '.($hc_i_button['target']=='_blank' ? 'target="_blank"' : '').' class="button">'.$hc_i_button['title'].'</a></div>' : '').'
+                  </div>
+              </div>
+              </div>
+              ';
+            }
+          }
+
+        ?>
+      </div>
+      <button type="button" id="prev_hc<?php echo $rand; ?>" class="icon-chevron-left"></button>
+      <button type="button" id="next_hc<?php echo $rand; ?>" class="icon-chevron-right"></button>
+    </div>
 
     <?php
 
