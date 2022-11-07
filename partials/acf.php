@@ -186,7 +186,7 @@ if( have_rows('flexible_content') ):
             echo '
             <div class="item">
               <div>
-                <a href="'.$tcbr_i_link['url'].'" style="background-image:url('.wp_get_attachment_image_url($tcbr_i_image['ID'], 'full', '').');" class="image" '.($tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').'><a>
+                <a href="'.$tcbr_i_link['url'].'" style="background-image:url('.wp_get_attachment_image_url($tcbr_i_image['ID'], 'full', '').');" class="image" '.($tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').'></a>
                 '.($tcbr_i_title != '' ? '<h3><a href="'.$tcbr_i_link['url'].'" '.($tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').'>'.$tcbr_i_title.'</a></h3>' : '').'
                 '.($tcbr_i_description != '' ? '<p>'.$tcbr_i_description.'</p>' : '').'
               </div>

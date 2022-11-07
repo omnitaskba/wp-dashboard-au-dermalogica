@@ -30,6 +30,9 @@ module.exports = {
       },
       fontSize:{
           xxs:'11px'
+      },
+      backgroundImage:{
+        'body':'url(../images/bc_background.jpeg)'
       }
     },
   },
