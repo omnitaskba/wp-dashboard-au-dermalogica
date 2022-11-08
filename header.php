@@ -26,6 +26,11 @@
                     )
                     );
                 ?>
+                <?php if(is_user_logged_in()) { ?>
+                    <a href="<?php echo do_shortcode('[openid_connect_generic_auth_url]'); ?>" class="button white rounded-full">sign out</a>
+                <?php } else { ?>
+                    <a href="<?php echo wp_logout_url('/'); ?>" class="button white rounded-full">sign in</a>
+                <?php } ?>
             </div>
 
         </div>

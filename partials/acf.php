@@ -186,8 +186,8 @@ if( have_rows('flexible_content') ):
             echo '
             <div class="item">
               <div>
-                <a href="'.$tcbr_i_link['url'].'" style="background-image:url('.wp_get_attachment_image_url($tcbr_i_image['ID'], 'full', '').');" class="image" '.($tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').'></a>
-                '.($tcbr_i_title != '' ? '<h3><a href="'.$tcbr_i_link['url'].'" '.($tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').'>'.$tcbr_i_title.'</a></h3>' : '').'
+                <a href="'.($tcbr_i_link ? $tcbr_i_link['url'] : '#').'" style="background-image:url('.wp_get_attachment_image_url($tcbr_i_image['ID'], 'full', '').');" class="image" '.($tcbr_i_link && $tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').'></a>
+                '.($tcbr_i_title != '' ? '<h3><a href="'.($tcbr_i_link ? $tcbr_i_link['url'] : '#').'" '.($tcbr_i_link && $tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').'>'.$tcbr_i_title.'</a></h3>' : '').'
                 '.($tcbr_i_description != '' ? '<p>'.$tcbr_i_description.'</p>' : '').'
               </div>
               '.($tcbr_i_link ? '<a href="'.$tcbr_i_link['url'].'" '.($tcbr_i_link['target']=='_blank' ? 'target="_blank"' : '').' class="button">'.$tcbr_i_title.'</a>' : '').'
@@ -209,6 +209,7 @@ if( have_rows('flexible_content') ):
         $hcta_image = get_sub_field('hcta_image');
         $hcta_title = get_sub_field('hcta_title');
         $hcta_description = get_sub_field('hcta_description');
+        $hcta_button = get_sub_field('hcta_button');
 
     ?>
     <div class="hero_cta">
@@ -216,6 +217,7 @@ if( have_rows('flexible_content') ):
           <div class="flex flex-col lg:flex-row justify-between items-center">
             <div class="w-full lg:w-1/3">
               <?php echo wp_get_attachment_image($hcta_image['ID'], 'large', ''); ?>
+              <?php echo ($hcta_button ? '<a href="'.$hcta_button['url'].'" '.($hcta_button['target']=='_blank' ? 'target="_blank"' : '').' class="button mt-4">'.$hcta_button['title'].'</a>' : ''); ?>
             </div>
             <div class="w-full lg:w-2/3">
               <div class="lg:px-10 py-6">
@@ -271,9 +273,128 @@ if( have_rows('flexible_content') ):
 
     <?php
 
+      elseif( get_row_layout() == 'cta_default' ):
+
+        $ctad_bg_image = get_sub_field('ctad_bg_image');
+        $ctad_title = get_sub_field('ctad_title');
+        $ctad_text = get_sub_field('ctad_text');
+        $ctad_button = get_sub_field('ctad_button');
+
+    ?>
+    <div <?php if($ctad_bg_image){ echo 'style="background-image:url('.wp_get_attachment_image_url($ctad_bg_image['ID'], 'full', '').');"'; } ?> class="cta_default py-20 bg-cover bg-center">
+      <div class="container">
+          <h3 class="text-center mb-4 font-caslonRegular"><?php echo $ctad_title; ?></h3>
+          <?php if($ctad_text != ''){ ?>
+            <div class="text-center"><?php echo $ctad_text; ?></div>
+          <?php } ?>
+          <?php echo ($ctad_button ? '<div class="flex justify-center items-center mt-4"><a href="'.$ctad_button['url'].'" '.($ctad_button['target']=='_blank' ? 'target="_blank"' : '').' class="button outline primary mt-4">'.$ctad_button['title'].'</a></div>' : ''); ?>
+      </div>
+    </div>
+
+    <?php
+
+      elseif( get_row_layout() == 'zigzag_block' ):
+
+        $zz_aligment = get_sub_field('zz_aligment');
+        $zz_image = get_sub_field('zz_image');
+        $zz_bg_color = get_sub_field('zz_bg_color');
+        $zz_title = get_sub_field('zz_title');
+        $zz_text = get_sub_field('zz_text');
+        $zz_button = get_sub_field('zz_button');
+
+        $order1 = '';
+        $order2 = '';
+
+        if($zz_aligment=='left'){
+          $order1 = 'order-1 lg:order-1';
+          $order2 = 'order-2 lg:order-2';
+        }else{
+          $order1 = 'order-1 lg:order-2';
+          $order2 = 'order-2 lg:order-1';
+        }
+
+    ?>
+    <div class="container">
+      <div class="zigzag flex flex-col lg:flex-row" style="background-color:<?php echo $zz_bg_color; ?>">
+        <div style="background-image:url('<?php echo wp_get_attachment_image_url($zz_image['ID'], 'large', ''); ?>');" class="block bg-cover bg-center aspect-square w-full lg:w-1/2 <?php echo $order1; ?>"></div>
+        <div class="w-full lg:w-1/2 <?php echo $order2; ?> flex justify-start items-center">
+          <div class=" py-10 px-6 lg:px-20">
+            <h3 class="mb-4 font-caslonRegular"><?php echo $zz_title; ?></h3>
+            <?php if($zz_text != ''){ ?>
+              <div class=""><?php echo $zz_text; ?></div>
+            <?php } ?>
+            <?php echo ($zz_button ? '<div class="flex justify-start items-start mt-4"><a href="'.$zz_button['url'].'" '.($zz_button['target']=='_blank' ? 'target="_blank"' : '').' class="button outline primary mt-4">'.$zz_button['title'].'</a></div>' : ''); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <?php
+
+      elseif( get_row_layout() == 'vertical_space' ):
+
+        $vs_desktop = get_sub_field('vs_desktop');
+        $vs_tablet = get_sub_field('vs_tablet');
+        $vs_mobile = get_sub_field('vs_mobile');
+        $rand = mt_rand(000,999);
+
+    ?>
+    <style>
+      .vertical_space#vs<?php $rand; ?>{
+        height:<?php echo $vs_desktop; ?>px;
+      }
+      @media(max-width:991px){
+        .vertical_space#vs<?php $rand; ?>{
+          height:<?php echo $vs_tablet; ?>px;
+        }
+      }
+      @media(max-width:767px){
+        .vertical_space#vs<?php $rand; ?>{
+          height:<?php echo $vs_mobile; ?>px;
+        }
+      }
+    </style>
+    <div class="vertical_space" id="vs<?php $rand; ?>"></div>
+
+    <?php
+
+      elseif( get_row_layout() == 'accordion' ):
+
+        $a_title = get_sub_field('a_title');
+
+    ?>
+    <div class="container">
+      <?php if($a_title){ ?> 
+        <h3 class="text-center mb-8 font-caslonRegular"><?php echo $a_title; ?></h3>
+      <?php } ?>
+      <div class="accordions">
+      <?php
+
+        if( have_rows('a_items') ){
+          $i=0;
+          while ( have_rows('a_items') ){
+            the_row(); $i++;
+
+            $a_i_title = get_sub_field('a_i_title');
+            $a_i_content = get_sub_field('a_i_content');
+
+            echo '
+            <div>
+              <a class="title">'.$a_i_title.'<i class="icon-chevron-down"></i></a>
+              <div class="content">'.$a_i_content.'</div>
+            </div>  
+            ';
+          }
+        }
+
+      ?>
+      </div>
+    </div>
+
+    <?php
+
       elseif( get_row_layout() == '' ):
 
-        // $ = get_sub_field('');
         // $ = get_sub_field('');
         // $ = get_sub_field('');
         // $ = get_sub_field('');
@@ -295,6 +416,19 @@ if( have_rows('flexible_content') ):
         // $ = get_sub_field('');
         // $ = get_sub_field('');
         // $ = get_sub_field('');
+
+    ?>
+
+    <?php
+
+      elseif( get_row_layout() == '' ):
+
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
         // $ = get_sub_field('');
 
     ?>
@@ -304,6 +438,47 @@ if( have_rows('flexible_content') ):
       elseif( get_row_layout() == '' ):
 
         // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+
+    ?>
+
+    <?php
+
+      elseif( get_row_layout() == '' ):
+
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+
+    ?>
+
+    <?php
+
+      elseif( get_row_layout() == '' ):
+
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+        // $ = get_sub_field('');
+
+    ?>
+
+    <?php
+
+      elseif( get_row_layout() == '' ):
+
         // $ = get_sub_field('');
         // $ = get_sub_field('');
         // $ = get_sub_field('');

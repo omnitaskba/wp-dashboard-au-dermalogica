@@ -125,10 +125,10 @@ body{
 
 
 h1{
-    @apply text-[42px] lg:text-[54px] font-helvetica25 leading-[54px] lg:leading-[64px] tracking-wide;
+    @apply text-[32px] lg:text-[40px] font-caslonRegular leading-[54px] lg:leading-[64px] tracking-wide;
 }
 h2{
-    @apply text-[28px] lg:text-[38px] font-helvetica25 leading-[42px] lg:leading-[54px] tracking-wider;
+    @apply text-[22px] lg:text-[26px] font-caslonRegular leading-[42px] lg:leading-[54px] tracking-wider;
 }
 h3{
     @apply text-[22px] lg:text-[28px] font-helvetica75 leading-[30px] lg:leading-[36px];
@@ -165,7 +165,7 @@ a{
 
 /* header */
 .header{
-    @apply w-full bg-primary-dark h-[150px] lg:h-[160px] flex items-center z-[9];
+    @apply w-full bg-primary-dark h-[75px] lg:h-[80px] flex items-center z-[9];
 }
 .header .logo{
     @apply font-bold text-white text-2xl font-helvetica75;
@@ -174,19 +174,22 @@ a{
     @apply max-w-[200px] lg:max-w-[270px];
 }
 .header .navContainer{
-    @apply flex justify-end;
+    @apply flex justify-end items-center gap-6;
 }
-.header .navContainer > a{
+.header .navContainer > a.open{
     @apply flex lg:hidden justify-between items-center gap-2 bg-white text-primary-dark rounded-full px-5 py-3 font-light text-sm font-helvetica75;
 }
-.header .navContainer > a > span{
+.header .navContainer > a.open > span{
     @apply pt-[1px];
 }
-.header .navContainer > a > i {
+.header .navContainer > a.open > i {
     @apply text-primary-dark;
 }
 .admin-bar .header{
     @apply lg:top-[32px];
+}
+.header .navContainer > .button.white{
+    @apply hidden lg:flex;
 }
 .header .navContainer > ul{
     @apply hidden lg:flex justify-end items-center gap-6;
@@ -306,6 +309,12 @@ a{
 }
 .button.outline.secondary{
     @apply bg-white hover:bg-secondary hover:bg-opacity-100 border-2 border-secondary text-secondary outline-none hover:text-white;
+}
+.button.outline.primary{
+    @apply bg-white hover:bg-primary-dark hover:bg-opacity-100 border-2 border-primary-dark text-primary-dark outline-none hover:text-white;
+}
+.button.white{
+    @apply bg-white hover:bg-primary-light hover:bg-opacity-100 border-2 border-primary-dark text-primary-dark outline-none hover:text-white;
 }
 
 
@@ -527,4 +536,23 @@ a{
 }
 .article-single blockquote{
     @apply py-10 text-center italic text-2xl;
+}
+
+
+
+/* accordions */
+.accordions > div{
+    @apply border-t-[1px] border-t-gray-100;
+}
+.accordions > div > .title{
+    @apply flex justify-between items-center py-6 font-helvetica75 cursor-pointer;
+}
+.accordions > div > .content{
+    @apply h-0 opacity-0 overflow-hidden transition-all ease-in-out;
+}
+.accordions > div.active > .content{
+    @apply h-auto opacity-100;
+}
+.accordions > div.active > .title i{
+    @apply rotate-180;
 }
